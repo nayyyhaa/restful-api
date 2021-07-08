@@ -1,0 +1,25 @@
+POST http://localhost:3000/posts/
+content-type: application/json
+
+{
+    "title": "sample 2",
+    "description": "I test"
+}
+
+###
+GET http://localhost:3000/posts/
+
+###
+GET http://localhost:3000/posts/60e72d477f8d08168c229d96
+
+###
+DELETE http://localhost:3000/posts/60e6eb9f75b6510c482b8d7e
+
+###
+PATCH http://localhost:3000/posts/60e6eb9f75b6510c482b8d7e
+content-type: application/json
+
+{
+    "title": "sample new",
+    "description": "nene"
+}
