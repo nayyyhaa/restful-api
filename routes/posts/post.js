@@ -2,8 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../../models/Post');
 
-router.get('/', (req,res) => {
-    res.send('in posts!');
+router.get('/', async (req,res) => {
+    try { 
+        const posts = await Post.find(); //method in mongoose
+        res.send(posts);
+    } catch(err) {
+        res.json({message: err});
+    }
 });
 
 router.get('/specific', (req,res) => {
