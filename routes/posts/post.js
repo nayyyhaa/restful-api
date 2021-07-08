@@ -11,19 +11,18 @@ router.get('/specific', (req,res) => {
 });
 
 //use DB
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const post = new Post({ 
         title: req.body.title,
         description: req.body.description
     });
-    post.save() //returns promise
-        .then(data => {
-            res.json(data)
-        })
-        .catch(err => {
-            res.json({message: err})
-        })
-    //console.log(req.body)
+    try{
+        const savedPost = await post.save() //returns promise
+        res.json(savedPost)
+        //console.log(req.body)
+    } catch(err) {
+        res.json({message: err});
+    }
 })
 
 module.exports = router;
